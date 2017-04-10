@@ -22,7 +22,7 @@ public class MenuNavigationSystem extends Application {
     @Override
     public void start(Stage primaryStage) {
         Button btn = new Button();
-        btn.setText("Say 'Hello World'");
+        btn.setText("Dish Options");
         btn.setOnAction(new EventHandler<ActionEvent>() {
             
             @Override
@@ -36,7 +36,7 @@ public class MenuNavigationSystem extends Application {
         
         Scene scene = new Scene(root, 300, 250);
         
-        primaryStage.setTitle("Smart Restaurant2");
+        primaryStage.setTitle("Smart Restaurant");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
