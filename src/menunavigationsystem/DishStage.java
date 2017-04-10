@@ -22,7 +22,8 @@ import javafx.stage.Stage;
  */
 public class DishStage extends Stage {
     
-   public DishStage(){
+   public DishStage()
+   {
         sp = new ScrollPane();
         gp = new GridPane();
         
@@ -33,7 +34,9 @@ public class DishStage extends Stage {
         this.setScene(scene);
        
     }
-    public void save(){
+   
+    public void save()
+    {
         this.close();
         //for debugging purpose
         
@@ -66,7 +69,8 @@ public class DishStage extends Stage {
                 }
             });
         gp.add(btnSave, 1, arrEm.length);
-    */ Button btnCheck = new Button();
+    */ 
+       Button btnCheck = new Button();
        btnCheck.setText("Connect");
        gp.add(btnCheck,0,0);
        

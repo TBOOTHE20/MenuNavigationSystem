@@ -5,6 +5,8 @@
  */
 package menunavigationsystem;
 
+import java.io.File;
+import java.util.Scanner;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,8 +21,30 @@ import javafx.stage.Stage;
  */
 public class MenuNavigationSystem extends Application {
     
+    protected Scanner x;
+    
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) 
+    {
+        //1. Prepare data to be read from file
+        
+        java.io.File file = new java.io.File("config.txt");
+        
+        try
+        {
+            Scanner input = new Scanner (file);
+            while (input.hasNext())
+            {
+            String num = input.nextLine();
+            System.out.println(num);
+            }
+        }
+        catch(Exception e)
+        {
+            System.out.println("Did not read file\n");
+        }
+        
+        
         Button btn = new Button();
         btn.setText("Dish Options");
         btn.setOnAction(new EventHandler<ActionEvent>() {
@@ -43,11 +67,15 @@ public class MenuNavigationSystem extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+    
+    
+    
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) 
+    {
         launch(args);
     }
     
