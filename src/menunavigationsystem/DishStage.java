@@ -38,6 +38,7 @@ public class DishStage extends Stage {
     }
    
    int i =0;
+   int count = 0;
    
     public void save()
     {
@@ -49,16 +50,8 @@ public class DishStage extends Stage {
     public void refresh()
     {
         
-        /*Dish di = arrD[0];
-        System.out.println("psst"+di.name);
-        Label lblname = new Label(di.name);
-        Label lbldescription = new Label(di.description);
-        Label lblprice = new Label(di.price);
-        
-        gp.add(lblname,0,0);*/
-        
         //System.out.println("I got the first"+arrD.get(0).name);
-        int count = 0;
+       
         Label lblname = new Label(arrD.get(count).name);
         Label lbldescription = new Label(arrD.get(count).description);
         Label lblprice = new Label(arrD.get(count).price);
@@ -72,9 +65,56 @@ public class DishStage extends Stage {
        btnPrev.setText("Prev");
        gp.add(btnPrev,0,2);
        
+       btnPrev.setOnAction(new EventHandler<ActionEvent>() 
+       {            
+                @Override
+                public void handle(ActionEvent event) 
+                {
+                    if(count ==0)
+                    {
+                        
+                        refresh();
+                    
+                    }
+                    
+                    else
+                    {
+                    
+                       count = count-1;
+                       
+                       refresh();
+                       
+                    }
+                }
+            });
+       
+       
         Button btnNext = new Button();
        btnNext.setText("Next");
        gp.add(btnNext,1,2);
+       
+       btnNext.setOnAction(new EventHandler<ActionEvent>() 
+       {            
+                @Override
+                public void handle(ActionEvent event) 
+                {
+                    if(count <3)
+                    {
+                        count++;
+                        
+                        refresh();
+                    
+                    }
+                    
+                    else
+                    {
+                    
+                       count = 0;
+                       refresh();
+                       
+                    }
+                }
+            });
     
     
     }
