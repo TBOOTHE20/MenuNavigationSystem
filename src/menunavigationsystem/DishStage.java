@@ -5,6 +5,7 @@
  */
 package menunavigationsystem;
 
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -22,8 +23,9 @@ import javafx.stage.Stage;
  */
 public class DishStage extends Stage {
     
-   public DishStage()
+   public DishStage(ArrayList<Dish> myListofDishes)
    {
+        this.arrD =myListofDishes;
         sp = new ScrollPane();
         gp = new GridPane();
         
@@ -35,6 +37,8 @@ public class DishStage extends Stage {
        
     }
    
+   int i =0;
+   
     public void save()
     {
         this.close();
@@ -43,44 +47,34 @@ public class DishStage extends Stage {
     }
    
     public void refresh()
-    {/*
-        for(int i=0; i<arrEm.length; i++){
-            Employee em = arrEm[i];
-            Label lbl = new Label(em.name);
-            Button btn = new Button();
-            btn.setText("Edit");
-            btn.setOnAction(new EventHandler<ActionEvent>() {            
-                @Override
-                public void handle(ActionEvent event) {
-                    EmployeeForm ef = new EmployeeForm(em);
-                    ef.showAndWait();
-                }
-            });
-            gp.add(lbl, 0, i);
-            gp.add(btn, 1, i); 
-        }
-         Button btnSave = new Button();
-        btnSave.setText("Save");
-         btnSave.setOnAction(new EventHandler<ActionEvent>() {            
-                @Override
-                public void handle(ActionEvent event) {
-                    save();
-                    print();
-                }
-            });
-        gp.add(btnSave, 1, arrEm.length);
-    */ 
-       Button btnCheck = new Button();
-       btnCheck.setText("Connect");
-       gp.add(btnCheck,0,0);
+    {
+        
+        /*Dish di = arrD[0];
+        System.out.println("psst"+di.name);
+        Label lblname = new Label(di.name);
+        Label lbldescription = new Label(di.description);
+        Label lblprice = new Label(di.price);
+        
+        gp.add(lblname,0,0);*/
+        
+        //System.out.println("I got the first"+arrD.get(0).name);
+        int count = 0;
+        Label lblname = new Label(arrD.get(count).name);
+        Label lbldescription = new Label(arrD.get(count).description);
+        Label lblprice = new Label(arrD.get(count).price);
+        
+        gp.add(lblname,0,0);
+        gp.add(lbldescription,1,0);
+        gp.add(lblprice,1,1);
+       
        
         Button btnPrev = new Button();
        btnPrev.setText("Prev");
-       gp.add(btnPrev,0,3);
+       gp.add(btnPrev,0,2);
        
         Button btnNext = new Button();
        btnNext.setText("Next");
-       gp.add(btnNext,1,3);
+       gp.add(btnNext,1,2);
     
     
     }
@@ -94,7 +88,7 @@ public class DishStage extends Stage {
         }
     }*/
     //data members
-    protected Dish[] arrD;
+    protected ArrayList<Dish> arrD;
     protected ScrollPane sp;
     protected GridPane gp;
     static DishStage instance = null;

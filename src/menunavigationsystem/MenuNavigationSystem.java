@@ -6,6 +6,8 @@
 package menunavigationsystem;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -26,22 +28,65 @@ public class MenuNavigationSystem extends Application {
     @Override
     public void start(Stage primaryStage) 
     {
-        //1. Prepare data to be read from file
+        //1. Prepare by finding the file
+        java.io.File file = new java.io.File("config.txt"); //get config file and put it in file
         
-        java.io.File file = new java.io.File("config.txt");
-        
+        int ctr =0;
+        //Dish [] arrDi = {};
+        //= new Dish[ctr]; // make an array the length of the file
+        ArrayList<Dish> myListofDishes = new ArrayList();      
         try
-        {
-            Scanner input = new Scanner (file);
+        {   //use a scanner that will read from file
+            Scanner input = new Scanner (file); 
             while (input.hasNext())
             {
-            String num = input.nextLine();
-            System.out.println(num);
+                String num = input.nextLine();
+                System.out.println(num);
+                ctr = ctr +1; //count how many lines in the file
             }
+            
+            Scanner input2 = new Scanner (file); 
+            int i =0;
+            while(input2.hasNext())
+            {
+                String num2 = input2.nextLine();
+                String parts[]= num2.split(": "); //cut off info type
+                String n = parts[1]; //get second part after :
+                System.out.println("the name is "+ n); //check
+                
+                String num3 =input2.nextLine();
+                String parts3[]=num3.split(": ");
+                String d = parts3[1];
+                System.out.println("The description is "+d);
+                
+                String num4 =input2.nextLine();
+                String parts4[]=num4.split(": ");
+                String p = parts4[1];
+                System.out.println("The price is "+p);
+                
+                String num5 =input2.nextLine();
+                String parts5[]=num5.split(": ");
+                String im = parts5[1];
+                System.out.println("The image is "+im);
+                
+                Dish plate1 = new Dish(n,d,p,im);//create the dish object
+                 
+                System.out.println(plate1.price);//check dish object stuff there
+                
+                //add to array
+                myListofDishes.add(plate1);
+                
+                System.out.println("Im in there");
+               
+                
+            }
+            
+           
+                
         }
         catch(Exception e)
         {
-            System.out.println("Did not read file\n");
+            System.out.println("Did not read file2\n");
         }
         
         
@@ -52,7 +97,7 @@ public class MenuNavigationSystem extends Application {
             @Override
             public void handle(ActionEvent event) {
                 //System.out.println("Hello World!");
-                DishStage ds = new DishStage();
+                DishStage ds = new DishStage(myListofDishes);
                 ds.refresh();
                 ds.showAndWait();
             }
@@ -66,6 +111,15 @@ public class MenuNavigationSystem extends Application {
         primaryStage.setTitle("Smart Restaurant");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        System.out.println("Hi");
+        
+        for (int y =0; y < myListofDishes.size(); y++)
+        {
+          System.out.println(myListofDishes.get(y).name);
+        
+        }
+        
     }
     
     

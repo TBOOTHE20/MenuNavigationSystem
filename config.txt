@@ -5,7 +5,12 @@ Image: ribeye.jpg
 Name: Popcorn Chicken
 Description: Very Spicy!
 Price: $5.99
-Image:popcorn.jpg
+Image: popcorn.jpg
 Name: Cheesecake
 Description: Divine!
 Price: $30.00
+Image: cheesecake.jpg
+Name: JerkChicken
+Description: Very Hot!
+Price: $25.00
+Image: jerkchicken.jpeg

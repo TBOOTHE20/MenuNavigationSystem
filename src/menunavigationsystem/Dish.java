@@ -10,13 +10,17 @@ package menunavigationsystem;
  * @author csc190
  */
 public class Dish {
-    public Dish(String name, String description, int price){
+    public Dish(String name, String description, String price, String image){
         this.name = name;
         this.description = description;
         this.price = price;
+        this.image = image;
+        
         
     }
     protected String name;
     protected String description;
-    protected int price;
+    protected String price;
+    protected String image;
+    
 }
