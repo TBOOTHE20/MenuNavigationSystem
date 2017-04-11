@@ -5,17 +5,20 @@
  */
 package menunavigationsystem;
 
+import static java.lang.reflect.Array.get;
 import java.util.ArrayList;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import sun.applet.Main;
 
 /**
  *
@@ -39,6 +42,9 @@ public class DishStage extends Stage {
    
    int i =0;
    int count = 0;
+   Label lblname ;
+   Label lbldescription ;
+   Label lblprice;
    
     public void save()
     {
@@ -49,16 +55,28 @@ public class DishStage extends Stage {
    
     public void refresh()
     {
-        
+        //ImageView Image = new ImageView(new Image(getClass().getResourceAsStream("/ribeye.jpeg")));
         //System.out.println("I got the first"+arrD.get(0).name);
-       
-        Label lblname = new Label(arrD.get(count).name);
-        Label lbldescription = new Label(arrD.get(count).description);
-        Label lblprice = new Label(arrD.get(count).price);
+      /*  final ImageView imv = new ImageView();
+        final Image image2 = new Image(Main.class.getResourceAsStream("/cheesecake.jpg"));
+        imv.setImage(image2);
+        final HBox pictureregion = new HBox();
+        
+        pictureregion.getChildren().add(imv);
+     
+        
+       */
+        
+        System.out.println("I'm in refresh so go to item " + count+"and display"+arrD.get(count).name);
+        
+        lblname = new Label(arrD.get(count).name);
+        lbldescription = new Label(arrD.get(count).description);
+        lblprice = new Label(arrD.get(count).price);
         
         gp.add(lblname,0,0);
         gp.add(lbldescription,1,0);
         gp.add(lblprice,1,1);
+          //gp.add(pictureregion, 0,1);
        
        
         Button btnPrev = new Button();
@@ -72,16 +90,16 @@ public class DishStage extends Stage {
                 {
                     if(count ==0)
                     {
-                        
+                        System.out.println("Clear");
+                        System.out.println("The Prev button press so go to item" + count);
                         refresh();
                     
                     }
                     
                     else
                     {
-                    
-                       count = count-1;
-                       
+                        count = count-1;
+                       System.out.println("The Prev button press so go to item" + count);
                        refresh();
                        
                     }
@@ -101,7 +119,7 @@ public class DishStage extends Stage {
                     if(count <3)
                     {
                         count++;
-                        
+                    System.out.println("The Next button press so go to item" + count);
                         refresh();
                     
                     }
@@ -110,6 +128,7 @@ public class DishStage extends Stage {
                     {
                     
                        count = 0;
+                       System.out.println("The Next button press so go to item" + count);
                        refresh();
                        
                     }
@@ -119,14 +138,7 @@ public class DishStage extends Stage {
     
     }
     
-    /*
-    public void print()
-    {
-        for(int i=0; i<this.arrEm.length; i++){
-            Employee ep = arrEm[i];
-            System.out.println("Name: " + ep.name + ", Age: " + String.valueOf(ep.age));
-        }
-    }*/
+    
     //data members
     protected ArrayList<Dish> arrD;
     protected ScrollPane sp;
