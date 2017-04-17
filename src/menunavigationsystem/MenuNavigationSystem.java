@@ -98,7 +98,7 @@ public class MenuNavigationSystem extends Application {
             public void handle(ActionEvent event) {
                 //System.out.println("Hello World!");
                 DishStage ds = new DishStage(myListofDishes);
-                ds.refresh();
+                ds.initdishscreen();
                 ds.showAndWait();
             }
         });
